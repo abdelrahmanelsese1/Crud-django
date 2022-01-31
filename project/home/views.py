@@ -9,7 +9,7 @@ def insertstudent(request):
         context = {}
         context['ID'] = 1
         if (request.method == 'GET'):
-            return render(request, 'affairs/insertintake.html', context)
+            return render(request, 'home/mainpage.html', context)
         else:
 
             # intsake reques.post
@@ -19,9 +19,8 @@ def insertstudent(request):
             age = request.POST['age']
             track = request.POST['track']
 
-
-            student.objects.create(name = name, age = age, email = email , track= track)
-            intakes = student.objects.all()
-            context['students'] = intakes
+            student.objects.create(name=name, age=age, email=email, track=track)
+            students = student.objects.all()
+            context['students'] = students
             context['msg'] = 'student inserted'
             return render(request, 'home/mainpage.html', context)

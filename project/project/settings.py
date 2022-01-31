@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # 'registeration.apps. RegisterationConfig',
     'login.apps.LoginConfig',
     'home.apps.HomeConfig',
     'django.contrib.admin',
@@ -77,15 +76,16 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    	'default': {
-        	'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        	'NAME': 'iti2',
-        	'USER': 'myuser',
-        	'PASSWORD': 'password',
-        	'HOST': 'localhost',                      # Empty for localhost through domain sockets or 			'127.0.0.1' for localhost through TCP.
-        	'PORT': '',                      # Set to empty string for default.
-    	}
-	}
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'iti2',
+        'USER': 'postgres',
+        'PASSWORD': 'colt1911',
+        'HOST': 'localhost',
+        'PORT': ''
+
+    }
+}
 
 
 # Password validation
