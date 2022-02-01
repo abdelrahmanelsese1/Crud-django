@@ -1,0 +1,12 @@
+.loginform{
+margin-top:100px;
+margin-right:auto;
+margin-left:auto;
+border: 2px solid wheat;
+padding:30px;
+border-radius:20px;
+box-shadow:5px 5px 10px 10px darkred
+}
+.loginhead{
+padding:50px;
+}
