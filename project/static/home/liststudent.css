@@ -1,0 +1,12 @@
+.maintable{
+border:5px solid black;
+width : 80%;
+text-align:center;
+margin-left:auto;
+margin-right:auto;
+margin-top:50px
+
+}
+td,th{
+border:3px solid black
+}

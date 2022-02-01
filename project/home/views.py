@@ -24,3 +24,16 @@ def insertstudent(request):
             context['students'] = students
             context['msg'] = 'student inserted'
             return render(request, 'home/mainpage.html', context)
+
+def deletestudent(req,id):
+    context = {}
+    student.objects.filter(id=id).delete()
+    students = student.objects.all()
+    context['students'] = students
+    return render(req, 'home/liststudent.html', context)
+
+def liststudents(req):
+    context={}
+    students = student.objects.all()
+    context['students'] = students
+    return render(req, 'home/liststudent.html', context)

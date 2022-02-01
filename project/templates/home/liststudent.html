@@ -1,0 +1,28 @@
+{%extends 'home/mainpage.html'%}
+{%block css%}
+{%load static%}
+<link rel="stylesheet" href="{%static 'home/liststudent.css'%}">
+{%endblock%}
+{%block content%}
+<table class="maintable">
+    <tr>
+         <th>Student ID</th>
+        <th>Student Name</th>
+        <th>Track</th>
+        <th>Edit</th>
+
+
+    </tr>
+    {%for student in students%}
+    <tr>
+        <td>{{student.id}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.track}}</td>
+        <td>
+                   <a href="{%url 'delete' student.id %}">Delete</a>
+        </td>
+    </tr>
+    {%endfor%}
+</table>
+
+{%endblock%}
