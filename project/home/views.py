@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import student
+from .models import Student
 # Create your views here.
 def home(request):
     context = {}
@@ -8,7 +8,7 @@ def home(request):
 def insertstudent(request):
         context = {}
         context['ID'] = 1
-        if (request.method == 'GET'):
+        if request.method == 'GET':
             return render(request, 'home/mainpage.html', context)
         else:
 
@@ -19,21 +19,51 @@ def insertstudent(request):
             age = request.POST['age']
             track = request.POST['track']
 
-            student.objects.create(name=name, age=age, email=email, track=track)
-            students = student.objects.all()
+            Student.objects.create(name=name, age=age, email=email)
+            students = Student.objects.all()
             context['students'] = students
             context['msg'] = 'student inserted'
             return render(request, 'home/mainpage.html', context)
 
 def deletestudent(req,id):
     context = {}
-    student.objects.filter(id=id).delete()
-    students = student.objects.all()
+    Student.objects.filter(id=id).delete()
+    students = Student.objects.all()
     context['students'] = students
     return render(req, 'home/liststudent.html', context)
 
 def liststudents(req):
     context={}
-    students = student.objects.all()
+    students = Student.objects.all()
     context['students'] = students
     return render(req, 'home/liststudent.html', context)
+
+def searchstudent(request):
+    if request.method == 'GET':
+        return render(request, 'home/search.html')
+    else:
+        search_name = Student.objects.filter(name=request.POST['search'])
+        if len(search_name) > 0:
+            request.session['searchName'] = request.POST['search']
+            return render(request, 'home/search.html')
+        else:
+            request.session['error msg'] = 'No matching record'
+            return render(request, 'home/search.html')
+
+def updatestudent(request,id):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        student = Student.objects.get(id=id)
+        if student:
+            student.name = username
+            student.save()
+            # students = Student.objects.all()
+            # context = {'students': students}
+            return render(request, 'home/mainpage.html')
+        else:
+            return render(request, 'home/liststudent.html')
+    else:
+        return render(request, 'home/liststudent.html')
+
+
+

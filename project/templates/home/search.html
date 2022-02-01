@@ -1,0 +1,10 @@
+{%extends 'home/mainpage.html'%}
+{%block content%}
+<form method="post">
+    {%csrf_token%}
+    <input type="text" name="search" placeholder="Search by name">
+    <input type="submit" value="search">
+</form>
+<div>{{req.session.searchName}}</div>
+
+{%endblock%}

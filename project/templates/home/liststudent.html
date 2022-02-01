@@ -9,7 +9,8 @@
          <th>Student ID</th>
         <th>Student Name</th>
         <th>Track</th>
-        <th>Edit</th>
+        <th>Delete record</th>
+        <th>update record</th>
 
 
     </tr>
@@ -20,6 +21,15 @@
         <td>{{student.track}}</td>
         <td>
                    <a href="{%url 'delete' student.id %}">Delete</a>
+
+
+        </td>
+        <td>
+            <form action="{%url 'update' student.id%}" method="post">
+                {%csrf_token%}
+                <input name="username" type="text">
+                <input type="submit" value="update">
+            </form>
         </td>
     </tr>
     {%endfor%}
