@@ -32,8 +32,8 @@ def signup(request):
         return render(request, 'login/signup.html', context)
     else:
 
-        SignupInfo.objects.create(username=request.POST['name'], email=request.POST['email'], password=request.POST['password'])
-        User.objects.create_user(username=request.POST['name'], password=request.POST['password'], is_staff=True)
+        SignupInfo.objects.create(username=request.POST['username'], email=request.POST['useremail'], password=request.POST['userpassword'])
+        User.objects.create_user(username=request.POST['username'], password=request.POST['userpassword'], is_staff=True)
 
         return render(request, 'login/login.html', context)
 

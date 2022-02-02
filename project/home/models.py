@@ -5,8 +5,8 @@ from django.db import models
 
 
 class Track(models.Model):
-    id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=30)
+    Trackid = models.AutoField(primary_key=True)
+    trackname = models.CharField(max_length=30)
 
 class Student(models.Model):
     id = models.AutoField(primary_key=True)

@@ -1,5 +1,9 @@
 from django.shortcuts import render
 from .models import Student
+from django.views import View
+from .forms import AddStudent1
+
+from .forms import StudentInsert
 # Create your views here.
 def home(request):
     context = {}
@@ -64,6 +68,22 @@ def updatestudent(request,id):
             return render(request, 'home/liststudent.html')
     else:
         return render(request, 'home/liststudent.html')
+
+class InsertStudent1(View):
+    def get(self,request):
+        print('class based get')
+        context = {}
+        form = AddStudent1()
+        context['form'] = form
+        return render(request, 'home/insertstudent.html', context)
+
+    def post(self,request):
+        print('class based post')
+        context={}
+        afterpostform = AddStudent1(request.POST)
+        afterpostform.save()
+        return render(request, 'home/insertstudent.html', context)
+
 
 
 
