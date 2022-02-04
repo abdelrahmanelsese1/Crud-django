@@ -9,5 +9,5 @@ class StudentInsert(forms.Form):
 
 class AddStudent1(forms.ModelForm):
     class Meta:
-        fields = '__all__'  # ['username','name','email',trackid]#'all'
         model = Student
+        fields = '__all__'

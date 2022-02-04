@@ -1,10 +1,16 @@
 from django.shortcuts import render
-from .models import Student
+from .models import Student , Track
 from django.views import View
 from .forms import AddStudent1
-
+from django.views.generic import ListView,CreateView
 from .forms import StudentInsert
+
+
 # Create your views here.
+class TrackList(ListView):
+    model = Track
+
+
 def home(request):
     context = {}
     return render(request, 'home/mainpage.html', context)
@@ -71,14 +77,12 @@ def updatestudent(request,id):
 
 class InsertStudent1(View):
     def get(self,request):
-        print('class based get')
         context = {}
         form = AddStudent1()
         context['form'] = form
         return render(request, 'home/insertstudent.html', context)
 
     def post(self,request):
-        print('class based post')
         context={}
         afterpostform = AddStudent1(request.POST)
         afterpostform.save()
